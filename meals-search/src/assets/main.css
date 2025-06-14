@@ -1,0 +1,12 @@
+
+
+@import "tailwindcss";
+
+:root {
+
+  --section-px: 2rem;
+  --section-px-lg: 4rem;
+  --section-py: 3rem;
+  --section-py-lg: 5rem;
+
+}
