@@ -5,7 +5,7 @@
 
 <template>
     <div>
-        <h2 class="text-center">MealList</h2>
+        <h2 class="text-center">Search By Name</h2>
     </div>
 </template>
 
