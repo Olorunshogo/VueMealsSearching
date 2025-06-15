@@ -6,9 +6,6 @@
 
   const ingredients = ref([]);
 
-
-
-
   const mealStore = useMealStore();
   const meals = mealStore.meals;
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -31,7 +28,7 @@
       <div class="flex flex-col items-center justify-center gap-4 w-full h-full">
           
         <!-- Meal Search Bar -->
-        <div class="w-full h-full">
+        <!-- <div class="w-full h-full">
           <input 
             type="search" name="mealSearch" id="mealSearch" 
             placeholder="Search for Meals"
@@ -42,7 +39,7 @@
               placeholder-shown:text-sm duration-300 ease-in-out transition-all
             "
           />
-        </div>
+        </div> -->
 
         <!-- Meals List Search letter -->
         <div class="flex gap-2 justify-center mt-2">
@@ -54,7 +51,7 @@
 
       </div>
 
-      <!-- Meals -->
+      <!-- Ingredients -->
       <div class="flex flex-col gap-8 w-full h-full">
         <h3 class="text-center font-semibold">Ingredients</h3>
         <pre>{{ ingredients }}</pre>
