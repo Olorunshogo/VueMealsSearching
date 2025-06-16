@@ -6,9 +6,9 @@
 
 <template>
     <div>
-        <!-- <div>
+        <div>
             <NavBar />
-        </div> -->
+        </div>
 
         <main>
             <RouterView />

@@ -9,7 +9,8 @@ export const useMealStore = defineStore('meals', {
         searchedMeals: {
             loading: false,
             data: [] as Meal[]
-        }
+        },
+        mealDetails: null as Meal | null,
     }),
 
     actions: {
@@ -25,6 +26,17 @@ export const useMealStore = defineStore('meals', {
             } finally {
                 this.searchedMeals.loading = false;
             }
+        },
+
+        async getMealsById(id: string) {
+            try {
+                const response = await axiosClient.get(`lookup.php?i=${id}`);
+                this.mealDetails = response.data.meals?.[0] || null;
+            } catch (error) {
+                console.error("Failed to fetch meal by ID ", error)
+                this.mealDetails = null;
+            }
         }
+
     }
 })

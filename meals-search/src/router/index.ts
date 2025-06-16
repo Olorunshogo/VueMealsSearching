@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DefaultLayout from '@/components/DefaultLayout.vue'
+import CustomLayout from '@/components/CustomLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,13 @@ const router = createRouter({
           path: '/letter/:letter?',
           name: 'byLetter',
           component: () => import('../views/MealsByLetter.vue'),
+        },
+
+        // Meal Details
+        {
+          path: '/meal/:id',
+          name: 'mealDetails',
+          component: () => import('../views/MealDetails.vue'),
         }
       ]
 
@@ -51,7 +59,7 @@ const router = createRouter({
     // Custom Layout
     {
       path: '/auth',
-      component: DefaultLayout,
+      component: CustomLayout,
       children: [
 
       ]
