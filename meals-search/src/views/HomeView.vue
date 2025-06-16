@@ -19,8 +19,7 @@
 </script>
 
 <template>
-  <main class="w-full h-full px-(--section-px) lg:px-(--section-px-lg)">
-
+  <div class="w-full h-full px-(--section-px) lg:px-(--section-px-lg)">
     <div class="flex flex-col gap-12 w-full mx-auto max-w-7xl h-full py-(--section-py) lg:py-(--section-py-lg)">
       <h2 class="text-xl text-center py-4 font-bold">Home page</h2>
 
@@ -71,7 +70,10 @@
 
     </div>
 
-  </main>
+    <div>
+      <RouterView />
+    </div>
+  </div>
   
 </template>
 
