@@ -2,14 +2,11 @@
 <script setup lang='ts'>
     import { watch, ref, onMounted } from 'vue';
     import { useMealStore } from '@/stores/meals';
-    import { RouterLink, useRoute } from 'vue-router';
-    // import { useLocalStorage } from '@/composables/useLocalStorage';    
-    import YoutubeButton from '@/components/YoutubeButton.vue';
+    import { useRoute } from 'vue-router';
     import MealItem from '@/components/MealItem.vue';
 
     const mealStore = useMealStore();
     const keyword = ref<string>('');
-    // const keyword: Ref<string> = useLocalStorage('meal-search-keyword', '');
     let debounceTimeout: number | undefined;
     const route = useRoute();
 

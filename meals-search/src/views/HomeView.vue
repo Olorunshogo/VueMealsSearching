@@ -8,7 +8,7 @@
 
   const mealStore = useMealStore();
   const meals = mealStore.meals;
-  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  
 
   onMounted(async () => {
     const response = await axiosClient.get('/list.php?i=list');
@@ -16,18 +16,23 @@
     ingredients.value = response.data
   });
 
+  function displayMeals() {
+    
+  }
+
 </script>
 
 <template>
   <div class="w-full h-full px-(--section-px) lg:px-(--section-px-lg)">
     <div class="flex flex-col gap-12 w-full mx-auto max-w-7xl h-full py-(--section-py) lg:py-(--section-py-lg)">
-      <h2 class="text-xl text-center py-4 font-bold">Home page</h2>
+      <h1 class="text-xl text-center py-4 font-bold">Meals</h1>
 
       <!-- Meals -->
       <div class="flex flex-col items-center justify-center gap-4 w-full h-full">
+
           
         <!-- Meal Search Bar -->
-        <!-- <div class="w-full h-full">
+        <div class="w-full h-full">
           <input 
             type="search" name="mealSearch" id="mealSearch" 
             placeholder="Search for Meals"
@@ -38,14 +43,12 @@
               placeholder-shown:text-sm duration-300 ease-in-out transition-all
             "
           />
-        </div> -->
+        </div>
 
         <!-- Meals List Search letter -->
         <div class="flex gap-2 justify-center mt-2">
           <!-- <pre class="flex">{{ letters }}</pre> -->
-          <router-link :to="{ name: 'byLetter', params: { letter } }" v-for="letter of letters" :key="letter">
-            {{ letter }}
-          </router-link>
+          
         </div>
 
       </div>
