@@ -20,11 +20,7 @@
     function getMealsByLetter() {
         const letterParam = route.params.letter;
         const letter = Array.isArray(letterParam) ? letterParam[0] : letterParam;
-
-        // if (letter && typeof letter === 'string') {
-        //     mealStore.searchMealsByLetter(letter);
-        // }
-
+        
         mealStore.searchMealsByLetter(letter);
         
     }

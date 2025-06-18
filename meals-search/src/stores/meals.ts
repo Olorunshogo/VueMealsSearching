@@ -18,6 +18,11 @@ export const useMealStore = defineStore('meals', {
         searchedMealsByIngredients: {
             loading: false,
             data: [] as Meal[]
+        },
+
+        allIngredients: {
+            loading: false,
+            data: [] as Meal[]
         }
     }),
 
@@ -77,6 +82,21 @@ export const useMealStore = defineStore('meals', {
                 this.searchedMealsByIngredients.loading = false;
             }
         },
+
+        // Fetch all Ingredients
+        async fetchAllIngredients() {
+            this.allIngredients.loading = true;
+
+            try {
+                const response = await axiosClient.get(`list.php?i=list`);
+                this.allIngredients.data = response.data.meals || [];
+            } catch (error) {
+                console.error("Failed to fetch ingredients list", error);
+                this.allIngredients.data = [];
+            } finally {
+                this.allIngredients.loading = false;
+            }
+        }
 
     }
 })

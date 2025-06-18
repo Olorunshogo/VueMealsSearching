@@ -40,8 +40,8 @@
 </script>
 
 <template>
-    <div class="flex flex-col gap-8 mt-8 w-full h-full px-(--section-px) lg:px-(--section-px-lg)">
-        <h2 class="text-center">Search By Name</h2>
+    <div class="flex flex-col gap-8 mt-8 w-full max-w-7xl mx-auto h-full px-(--section-px) lg:px-(--section-px-lg)">
+        <h1 class="text-center text-3xl md:text-4xl lg:text-5xl font-bold">Search by Name</h1>
             
         <!-- Meal Search Bar -->
         <div class="w-full h-full">

@@ -11,9 +11,10 @@
     }
 
     const navLinks = [
-        { name: 'byName', label: 'Search By Name' },
-        { name: 'byLetter', label: 'Meals by Letter' },
-        { name: 'byIngredients', label: 'Meals by Ingredients' },
+        { name: 'byName', label: 'By Name' },
+        { name: 'byLetter', label: 'By Letter' },
+        // { name: 'byIngredients', label: 'By Ingredients' },
+        { name: 'ingredients', label: 'Ingredients' },
         { name: 'about', label: 'About' }
     ];
 
@@ -72,27 +73,25 @@
             </div>
 
 
-            <div class="hidden sm:flex items-center justify-between font-bold text-sm gap-2 mx-auto cursor-pointer w-full max-w-7xl h-(--navbar-h) duration-300 ease-in-out transition-all">
-                <RouterLink :to="{name: 'home'}" class="inline-flex items-center h-full px-5 hover:bg-purple-500 duration-300 ease-in-out transition-all">
+            <div class="hidden sm:flex *:inline-flex items-center justify-between font-bold text-sm gap-2 mx-auto cursor-pointer w-full *:w-fit max-w-7xl h-(--navbar-h)">
+                
+                <RouterLink :to="{name: 'home'}" class="inline-flex items-center px-5 py-2 rounded-xl hover:shadow-xl hover:bg-purple-500 duration-300 ease-in-out transition-all">
                     Home
                 </RouterLink>
                 
-                <div class="flex items-center h-full *:inline-flex *:items-center *:px-2 *:h-full *:hover:bg-purple-500 *:duration-300 *:ease-in-out *:transition-all">
-                    <RouterLink :to="{name: 'byName'}">
+                <div class="flex items-center gap-2">
+                    
+                    <!-- <RouterLink :to="{name: 'byName'}">
                         Search By Name
-                    </RouterLink>
+                    </RouterLink> -->
 
-                    <RouterLink :to="{name: 'byLetter'}">
-                        Meals by Letter
-                    </RouterLink>
+                    <RouterLink v-for="link in navLinks" :key="link.name" :to="{ name: link.name }"
+                        class="p-2 text-center rounded-lg hover:shadow-lg hover:bg-purple-500 duration-300 ease-in-out transition-all"
+                    >
+                        {{ link.label }}
+                    </RouterLink> 
 
-                    <RouterLink :to="{name: 'byIngredients'}">
-                        Meals by Ingredients
-                    </RouterLink>
-
-                    <RouterLink :to="{name: 'about'}">
-                        About
-                    </RouterLink>
+                    
                 </div>
 
             </div>

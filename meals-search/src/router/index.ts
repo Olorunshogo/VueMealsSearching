@@ -27,9 +27,15 @@ const router = createRouter({
     },
 
     {
-      path: '/ingredients/:ingredients?',
+      path: '/by-ingredients/:ingredient?',
       name: 'byIngredients',
       component: () => import('../views/MealsByIngredients.vue'),
+    },
+
+    {
+      path: '/ingredients',
+      name: 'ingredients',
+      component: () => import('../views/IngredientsView.vue'),
     },
 
     {
