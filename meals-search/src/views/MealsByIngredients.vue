@@ -4,6 +4,7 @@
     import { useMealStore } from '@/stores/meals';
     import { useRoute, RouterLink } from 'vue-router';
     import MealItem from '@/components/MealItem.vue';
+    import { Icon } from '@iconify/vue';
 
     const mealStore = useMealStore();
     const route = useRoute();
@@ -35,9 +36,10 @@
             <RouterLink
                 to="/ingredients"
                 title="Back to Ingredients"
-                class="inline-block text-sm font-semibold px-4 py-2 w-fit rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition"
+                class="flex items-center gap-2 px-4 py-2 w-fit rounded bg-blue-600 text-white hover:bg-blue-700 transition"
             >
-                <Icon icon="mdi:arrow-all" /> Back to Ingredients
+                <Icon icon="mdi:arrow-left" class="text-lg font-bold" /> 
+                <span class="text-sm font-semibold">Back to Ingredients</span>
             </RouterLink>
             
             <!-- Titile -->

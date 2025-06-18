@@ -1,20 +1,25 @@
 <script setup lang="ts">
 
   import { RouterView } from 'vue-router';
-import NavbarComp from './components/NavbarComp.vue';
+  import NavbarComp from './components/NavbarComp.vue';
+  import FooterComponent from './components/FooterComponent.vue';
 
 </script>
 
 <template>
-  <main>
-    <div>
-      <NavbarComp />
-    </div>
+  <div class="min-h-screen flex flex-col bg-gray-100">
 
-    <div>
+    <!-- Navbar -->
+    <NavbarComp />
+
+    <div class="flex flex-grow">
       <RouterView />
     </div>
-  </main>
+
+    <!-- Footer -->
+    <FooterComponent />
+
+  </div>
 </template>
 
 <style scoped>

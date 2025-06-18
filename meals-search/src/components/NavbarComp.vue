@@ -13,7 +13,6 @@
     const navLinks = [
         { name: 'byName', label: 'By Name' },
         { name: 'byLetter', label: 'By Letter' },
-        // { name: 'byIngredients', label: 'By Ingredients' },
         { name: 'ingredients', label: 'Ingredients' },
         { name: 'about', label: 'About' }
     ];
@@ -21,10 +20,10 @@
 </script>
 
 <template>
-    <header class="flex items-center gap-8 shadow-lg px-(--section-px) lg:px-(--section-px-lg) w-full h-full">
-        <nav class="flex items-center cursor-pointer text-black w-full mx-auto max-w-7xl h-(--navbar-h) duration-300 ease-in-out transition-all">
+    <header class="shadow-lg w-full h-full">
+        <nav class="flex items-center cursor-pointer text-black w-full mx-auto max-w-7xl h-(--navbar-h) px-(--section-px) lg:px-(--section-px-lg) duration-300 ease-in-out transition-all">
         
-            <div class="flex sm:hidden items-center justify-between w-full h-fit">
+            <div class="flex lg:hidden items-center justify-between w-full h-fit">
                 <RouterLink :to="{name: 'home'}" class="inline-flex items-center h-full px-5 hover:bg-purple-500 duration-300 ease-in-out transition-all">
                     Home
                 </RouterLink>
@@ -43,7 +42,7 @@
 
             <div
                 v-if="isMenuOpen"
-                class="fixed sm:hidden top-(--navbar-h) flex inset-0 z-20"
+                class="fixed lg:hidden top-(--navbar-h) flex inset-0 z-20"
             >
                 <Transition name="slide-right" mode="out-in">
                     <aside
@@ -51,7 +50,7 @@
                         @click.self="toggleMenu"
                     >
                         <RouterLink v-for="link in navLinks" :key="link.name" :to="{ name: link.name }"
-                            class="p-2 text-center w-full max-w-sm mx-auto rounded-lg hover:bg-slate-200"
+                            class="p-2 text-center w-full max-w-sm mx-auto rounded hover:bg-slate-200"
                         >
                             {{ link.label }}
                         </RouterLink>         
@@ -61,7 +60,7 @@
 
             <div
                 v-if="isMenuOpen"
-                class="fixed sm:hidden top-(--navbar-h) inset-0 z-20 transition-transform duration-300 ease-in-out"
+                class="fixed lg:hidden top-(--navbar-h) inset-0 z-20 transition-transform duration-300 ease-in-out"
                 :class="isMenuOpen ? 'translate-x-2/3' : '-translate-x-full'"
             >
                 <Transition name="slide-left" mode="out-in">
@@ -73,17 +72,13 @@
             </div>
 
 
-            <div class="hidden sm:flex *:inline-flex items-center justify-between font-bold text-sm gap-2 mx-auto cursor-pointer w-full *:w-fit max-w-7xl h-(--navbar-h)">
+            <div class="hidden lg:flex *:inline-flex items-center justify-between font-bold text-sm gap-2 mx-auto cursor-pointer w-full *:w-fit max-w-7xl h-(--navbar-h)">
                 
                 <RouterLink :to="{name: 'home'}" class="inline-flex items-center px-5 py-2 rounded-xl hover:shadow-xl hover:bg-purple-500 duration-300 ease-in-out transition-all">
                     Home
                 </RouterLink>
                 
                 <div class="flex items-center gap-2">
-                    
-                    <!-- <RouterLink :to="{name: 'byName'}">
-                        Search By Name
-                    </RouterLink> -->
 
                     <RouterLink v-for="link in navLinks" :key="link.name" :to="{ name: link.name }"
                         class="p-2 text-center rounded-lg hover:shadow-lg hover:bg-purple-500 duration-300 ease-in-out transition-all"

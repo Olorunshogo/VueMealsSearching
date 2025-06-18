@@ -21,9 +21,9 @@
 
 <template>
     <div>
-        <li class="bg-white shadow-xl rounded-xl scale-100 hover:scale-102 duration-300 ease-in-out">
+        <li class="bg-white shadow-xl rounded scale-100 hover:scale-102 duration-300 ease-in-out">
 
-            <div class="flex flex-col col gap-4 w-full h-full">
+            <div class="flex flex-col col gap-2 w-full h-full">
                 
                 <!-- Meal Image -->
                 <RouterLink :to="{name: 'mealDetails', params: {id: meal.idMeal}}" 

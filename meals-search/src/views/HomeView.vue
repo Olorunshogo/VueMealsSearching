@@ -1,86 +1,102 @@
 
-<script setup lang="ts">
-  import { ref, onMounted } from 'vue';
-  import axiosClient from '../axiosClient'
-  import { useMealStore } from '@/stores/meals';
+<script setup lang='ts'>
 
-  const ingredients = ref([]);
-
-  const mealStore = useMealStore();
-  const meals = mealStore.meals;
-  
-
-  onMounted(async () => {
-    const response = await axiosClient.get('/list.php?i=list');
-    console.log(response.data);
-    ingredients.value = response.data
-  });
-
-  function displayMeals() {
-    
-  }
+    import { RouterLink } from 'vue-router';
 
 </script>
 
 <template>
-  <div class="w-full h-full px-(--section-px) lg:px-(--section-px-lg)">
-    <div class="flex flex-col gap-12 w-full mx-auto max-w-7xl h-full py-(--section-py) lg:py-(--section-py-lg)">
-      <h1 class="text-xl text-center py-4 font-bold">Meals</h1>
+    <div class="w-full h-full">
+        <div class="flex flex-col items-center gap-8 w-full min-h-screen bg-gray-100">
+            
+            <!-- Hero Section -->
+            <section class="w-full h-full bg-gradient-to-br from-blue-700 via-30% via-green-700 to-indigo-700 text-white text-center px-(--section-px) lg:px-(--section-px-lg) py-(--section-py) lg:py-(--section-py-lg)">
+                <div class="w-full max-w-7xl mx-auto h-full space-y-6">
+                    <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">
+                        Discover Delicious Meals Instantly
+                    </h1>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto">
+                        Search meals by name, ingredients, or even just the first letter.
+                        Whether you’re a home cook or food lover, get inspired to cook something amazing today.
+                    </p>
+                    <RouterLink 
+                        to="/by-name/avocado"
+                        class="inline-block bg-white text-blue-700 px-6 py-3 mt-4 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition"
+                    >
+                        Start Exploring
+                    </RouterLink>
+                </div>
+            </section>
 
-      <!-- Meals -->
-      <div class="flex flex-col items-center justify-center gap-4 w-full h-full">
+            <!-- Features Section -->
+            <section class="grid gap-8 md:grid-cols-3 text-center w-full max-w-7xl mx-auto px-(--section-px) lg:px-(--section-px-lg) py-(--section-py) lg:py-(--section-py-lg)">
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all">
+                    <div class="text-4xl mb-4">🔍</div>
+                    <h3 class="text-xl font-semibold mb-2">Search by Name</h3>
+                    <p class="text-gray-600">
+                        Know what you're craving? Just type and find meals instantly with a powerful live search.
+                    </p>
+                </div>
 
-          
-        <!-- Meal Search Bar -->
-        <div class="w-full h-full">
-          <input 
-            type="search" name="mealSearch" id="mealSearch" 
-            placeholder="Search for Meals"
-            class="
-              p-2 border-2 border-gray-200 rounded-lg outline-none h-12 w-full cursor-default
-              hover:border-b-blue-700 hover:cursor-pointer
-              focus:border-blue-700 focus:cursor-text 
-              placeholder-shown:text-sm duration-300 ease-in-out transition-all
-            "
-          />
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all">
+                    <div class="text-4xl mb-4">🔠</div>
+                    <h3 class="text-xl font-semibold mb-2">Search by First Letter</h3>
+                    <p class="text-gray-600">
+                        Feeling random? Pick a letter and explore meals starting with it for a surprise treat.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all">
+                    <div class="text-4xl mb-4">🥦</div>
+                    <h3 class="text-xl font-semibold mb-2">Search by Ingredients</h3>
+                    <p class="text-gray-600">
+                        Enter your available ingredients and find meals that make the most of what you have.
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- CTA Section -->
+            <section class="w-full bg-gray-300 text-center border-t px-(--section-px) lg:px-(--section-px-lg) py-(--section-py) lg:py-(--section-py-lg)">
+                <div class="max-w-4xl mx-auto space-y-4">
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800">
+                        Ready to find your next favorite dish?
+                    </h2>
+                    
+                    <p>
+                        Navigate through the app and explore meals that suit your cravings and creativity.
+                    </p>
+
+                    <div class="flex justify-center gap-4 flex-wrap pt-4">
+
+                        <RouterLink 
+                            to="/by-name/salmon" 
+                            class="bg-black text-white font-semibold px-5 py-2 rounded-md hover:opacity-85 duration-300 ease-in-out transition-all"
+                        >
+                            Search by Name
+                        </RouterLink>
+                        
+                        <RouterLink 
+                            to="/letter/a" 
+                            class="bg-indigo-600 text-white font-semibold px-5 py-2 rounded-md hover:bg-indigo-700 duration-300 ease-in-out transition-all"
+                        >
+                            Search by Letter
+                        </RouterLink>
+
+                        <RouterLink 
+                            to="/ingredients" 
+                            class="bg-green-600 text-white font-semibold px-5 py-2 rounded-md hover:bg-green-700 duration-300 ease-in-out transition-all"
+                        >
+                            Search by Ingredient
+                        </RouterLink>
+                    </div>
+                </div>
+            </section>
+
         </div>
-
-        <!-- Meals List Search letter -->
-        <div class="flex gap-2 justify-center mt-2">
-          <!-- <pre class="flex">{{ letters }}</pre> -->
-          
-        </div>
-
-      </div>
-
-      <!-- Ingredients -->
-      <div class="flex flex-col gap-8 w-full h-full">
-        <h3 class="text-center font-semibold">Ingredients</h3>
-        <pre>{{ ingredients }}</pre>
-      </div>
-
-      <!-- Meals -->
-      <div class="flex flex-col gap-8 w-full h-full">
-        <h3 class="text-center font-semibold">Meals</h3>
-        <ul class="flex flex-col gap-2">
-            <li v-for="meal in mealStore.meals" :key="meal"
-              class="list-disc"
-            >
-              {{ meal }}
-            </li>
-        </ul>
-      </div>
-
     </div>
-
-    <div>
-      <RouterView />
-    </div>
-  </div>
-  
 </template>
 
 <style lang="css" scoped>
 
 </style>
-

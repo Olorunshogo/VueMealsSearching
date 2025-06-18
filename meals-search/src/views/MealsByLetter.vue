@@ -36,14 +36,15 @@
 </script>
 
 <template>
-    <div>
+    <div class="w-full h-full">
 
-        <div class="flex flex-col gap-8 w-full max-w-7xl mx-auto h-full px-(--section-px lg:px-(--section-px-lg)) py-(--section-py) lg:py-(--section-py-lg)">
+        <div class="flex flex-col gap-8 w-full max-w-7xl mx-auto h-full px-(--section-px) lg:px-(--section-px-lg)) py-(--section-py) lg:py-(--section-py-lg)">
             
             <div class="flex flex-col gap-4">
-                <!-- Alphabet Search -->
+                <!-- Meal Alphabet Search -->
                 <h1 class="text-center text-3xl md:text-4xl lg:text-5xl font-bold">Search by Letter</h1>
-                <div class="flex justify-center gap-1 sm:gap-2 text-sm lg:text-base mt-2 text-black bg-gray-400 py-4">
+
+                <div class="flex justify-center gap-1 sm:gap-2 text-sm lg:text-base mt-2 text-black font-semibold py-4">
                     <router-link 
                         :to="{ name: 'byLetter', params: { letter } }" 
                         v-for="letter of letters" :key="letter"
@@ -54,12 +55,12 @@
                 </div>
             </div>
 
-            <!-- Alphabet Search Results -->
+            <!-- Meal Alphabet Search Results -->
             <div class="flex flex-col gap-8 w-full h-full">
-                <div v-if="mealStore.searchedMealsByLetter.loading">Loading...</div>
+                <div v-if="loading">Loading...</div>
 
                 <ul 
-                    v-else-if="mealStore.searchedMealsByLetter.data.length > 0"
+                    v-else-if="meals.length > 0"
                     class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-4"
                 >
                     <MealItem
@@ -69,7 +70,7 @@
                     />
                 </ul>
 
-                <div v-else>
+                <div v-else class="flex justify-center">
                     <p>No meals found for this letter.</p>
                 </div>
 

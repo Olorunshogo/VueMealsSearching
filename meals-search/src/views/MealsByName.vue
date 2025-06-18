@@ -39,41 +39,49 @@
 
 </script>
 
-<template>
-    <div class="flex flex-col gap-8 mt-8 w-full max-w-7xl mx-auto h-full px-(--section-px) lg:px-(--section-px-lg)">
-        <h1 class="text-center text-3xl md:text-4xl lg:text-5xl font-bold">Search by Name</h1>
+<template>    
+    <div class="w-full h-full">
+
+        <div class="flex flex-col gap-8 w-full max-w-7xl mx-auto h-full px-(--section-px) lg:px-(--section-px-lg) py-(--section-py) lg:py-(--section-py-lg)">
             
-        <!-- Meal Search Bar -->
-        <div class="w-full h-full">
-            <input 
-                type="search" name="mealSearch" id="mealSearch" 
-                v-model="keyword"
-                class="p-2 border-2 border-gray-200 rounded-lg outline-none h-12 w-full cursor-default hover:border-b-blue-700 hover:cursor-pointer
-                    focus:border-blue-700 focus:cursor-text placeholder-shown:text-sm duration-300 ease-in-out transition-all"
-                placeholder="Search for Meals"
-                @input="searchMeals"
-            />
-        </div>
-
-        <!-- Search Results -->
-        <div class="flex flex-col gap-8 w-full h-full">
-
-            <div v-if="mealStore.searchedMeals.loading">Loading...</div>
-
-            <ul 
-                v-else-if="mealStore.searchedMeals.data.length > 0"
-                class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-4"
-            >
-                <MealItem
-                    v-for="meal in mealStore.searchedMeals.data"
-                    :key="meal.idMeal"
-                    :meal="meal"
+            <h1 class="text-center text-3xl md:text-4xl lg:text-5xl font-bold">Search by Name</h1>
+                
+            <!-- Meal Search Bar By Name-->
+            <div class="w-full h-full">
+                <input 
+                    type="search" name="mealSearch" id="mealSearch" 
+                    v-model="keyword"
+                    class="p-2 bg-white border-2 border-gray-200 rounded-lg outline-none h-12 w-full cursor-default hover:border-b-blue-700 hover:cursor-pointer
+                        focus:border-blue-700 focus:cursor-text placeholder-shown:text-sm duration-300 ease-in-out transition-all"
+                    placeholder="Search for Meals"
+                    @input="searchMeals"
                 />
-            </ul>
-
-            <div v-else="keyword.length >= 2">
-                <p>No meals found</p>
             </div>
+
+            <!-- Search Results -->
+            <div class="flex flex-col gap-8 w-full h-full">
+
+                <div v-if="mealStore.searchedMeals.loading">Loading...</div>
+
+                <ul 
+                    v-else-if="mealStore.searchedMeals.data.length > 0"
+                    class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-4"
+                >
+                    <MealItem
+                        v-for="meal in mealStore.searchedMeals.data"
+                        :key="meal.idMeal"
+                        :meal="meal"
+                    />
+                </ul>
+
+                <div 
+                    v-else="keyword.length >= 2"
+                    class="flex justify-center"
+                >
+                    <p>No meals found</p>
+                </div>
+            </div>
+
         </div>
 
     </div>
